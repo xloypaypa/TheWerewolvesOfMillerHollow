@@ -1,6 +1,6 @@
 package game.jobAllocator;
 
-import player.Player;
+import player.playerInfo.PlayerGameInfo;
 
 import java.util.Collection;
 
@@ -10,6 +10,6 @@ import java.util.Collection;
  */
 public interface JobAllocator {
 
-    void allocate(Collection<Player> players);
+    void allocate(Collection<PlayerGameInfo> playerGameInfo);
 
 }

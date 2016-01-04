@@ -2,8 +2,8 @@ package game.jobAllocator;
 
 import org.junit.Before;
 import org.junit.Test;
-import player.Player;
-import player.PlayerJob;
+import player.playerInfo.PlayerGameInfo;
+import player.playerInfo.PlayerJob;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -42,17 +42,14 @@ public class CustomJobAllocatorTest {
 
     @Test
     public void should_3_players_are_were_wolf_when_only_have_three_player() {
-        List<Player> players = new ArrayList<>();
-        players.add(new Player("a") {
-        });
-        players.add(new Player("b") {
-        });
-        players.add(new Player("c") {
-        });
-        customJobAllocator.allocate(players);
+        List<PlayerGameInfo> playerGameInfo = new ArrayList<>();
+        playerGameInfo.add(new PlayerGameInfo("a"));
+        playerGameInfo.add(new PlayerGameInfo("b"));
+        playerGameInfo.add(new PlayerGameInfo("c"));
+        customJobAllocator.allocate(playerGameInfo);
 
         int count = 0;
-        for (Player now : players) {
+        for (PlayerGameInfo now : playerGameInfo) {
             if (now.isJob(PlayerJob.WEREWOLF)) {
                 count++;
             }
@@ -63,46 +60,37 @@ public class CustomJobAllocatorTest {
 
     @Test
     public void should_the_1st_player_is_prophet_when_have_4_players() {
-        List<Player> players = new ArrayList<>();
-        players.add(new Player("a") {
-        });
-        players.add(new Player("b") {
-        });
-        players.add(new Player("c") {
-        });
-        players.add(new Player("d") {
-        });
-        customJobAllocator.allocate(players);
+        List<PlayerGameInfo> playerGameInfo = new ArrayList<>();
+        playerGameInfo.add(new PlayerGameInfo("a"));
+        playerGameInfo.add(new PlayerGameInfo("b"));
+        playerGameInfo.add(new PlayerGameInfo("c"));
+        playerGameInfo.add(new PlayerGameInfo("d"));
+        customJobAllocator.allocate(playerGameInfo);
 
-        assertTrue(players.get(0).isJob(PlayerJob.PROPHET));
+        assertTrue(playerGameInfo.get(0).isJob(PlayerJob.PROPHET));
     }
 
     @Test
     public void should_the_1st_player_is_hunter_when_have_5_players() {
-        List<Player> players = new ArrayList<>();
-        players.add(new Player("a") {
-        });
-        players.add(new Player("b") {
-        });
-        players.add(new Player("c") {
-        });
-        players.add(new Player("d") {
-        });
-        players.add(new Player("e") {
-        });
-        customJobAllocator.allocate(players);
+        List<PlayerGameInfo> playerGameInfo = new ArrayList<>();
+        playerGameInfo.add(new PlayerGameInfo("a"));
+        playerGameInfo.add(new PlayerGameInfo("b"));
+        playerGameInfo.add(new PlayerGameInfo("c"));
+        playerGameInfo.add(new PlayerGameInfo("d"));
+        playerGameInfo.add(new PlayerGameInfo("e"));
+        customJobAllocator.allocate(playerGameInfo);
 
-        assertTrue(players.get(0).isJob(PlayerJob.HUNTER));
+        assertTrue(playerGameInfo.get(0).isJob(PlayerJob.HUNTER));
     }
 
-    @Test (expected = InvalidParameterException.class)
+    @Test(expected = InvalidParameterException.class)
     public void should_get_exception_when_give_too_many_player() {
-        List<Player> players = new ArrayList<>();
-        for (int i=0;i<100;i++) {
-            players.add(new Player("a") {
+        List<PlayerGameInfo> playerGameInfo = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            playerGameInfo.add(new PlayerGameInfo("a") {
             });
         }
-        customJobAllocator.allocate(players);
+        customJobAllocator.allocate(playerGameInfo);
     }
 
 }

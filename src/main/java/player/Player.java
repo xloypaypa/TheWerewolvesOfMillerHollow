@@ -1,42 +1,25 @@
 package player;
 
-import java.util.HashSet;
-import java.util.Set;
+import game.ActionAble;
+import player.playerInfo.PlayerGameInfo;
 
 /**
  * Created by xlo on 2016/1/4.
  * it's the player
  */
-public abstract class Player {
+public abstract class Player implements KillAble, ActionAble {
 
-    protected String playerName;
-    protected Set<PlayerJob> playerJob;
-    private boolean isAction;
+    private PlayerGameInfo playerGameInfo;
+    private boolean isAction, isAlive;
 
-    protected Player(String playerName) {
-        this.playerName = playerName;
+    public Player(PlayerGameInfo playerGameInfo) {
+        this.playerGameInfo = playerGameInfo;
         this.isAction = false;
+        this.isAlive = true;
     }
 
-    public void changePlayerJob(PlayerJob playerJob) {
-        this.playerJob = new HashSet<>();
-        addPlayerJob(playerJob);
-    }
-
-    public void addPlayerJob(PlayerJob playerJob) {
-        this.playerJob.add(playerJob);
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public Set<PlayerJob> getPlayerJob() {
-        return playerJob;
-    }
-
-    public boolean isJob(PlayerJob playerJob) {
-        return this.playerJob.contains(playerJob);
+    public boolean isAlive() {
+        return isAlive;
     }
 
     public boolean isAction() {
@@ -49,5 +32,9 @@ public abstract class Player {
 
     public void clearAction() {
         this.isAction = false;
+    }
+
+    public PlayerGameInfo getPlayerGameInfo() {
+        return playerGameInfo;
     }
 }

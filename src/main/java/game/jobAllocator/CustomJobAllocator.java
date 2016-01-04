@@ -1,7 +1,7 @@
 package game.jobAllocator;
 
-import player.Player;
-import player.PlayerJob;
+import player.playerInfo.PlayerGameInfo;
+import player.playerInfo.PlayerJob;
 
 import java.security.InvalidParameterException;
 import java.util.*;
@@ -21,20 +21,20 @@ public class CustomJobAllocator implements JobAllocator {
     }
 
     @Override
-    public void allocate(Collection<Player> players) {
-        checkHaveEnoughtJob(players);
-        PlayerRandomHelper[] playerRandomHelpers = buildJobArray(players);
-        setPlayerJob(players, playerRandomHelpers);
+    public void allocate(Collection<PlayerGameInfo> playerGameInfo) {
+        checkHaveEnoughtJob(playerGameInfo);
+        PlayerRandomHelper[] playerRandomHelpers = buildJobArray(playerGameInfo);
+        setPlayerJob(playerGameInfo, playerRandomHelpers);
     }
 
-    private void checkHaveEnoughtJob(Collection<Player> players) {
-        if (players.size() > playerJobs.size()) {
+    private void checkHaveEnoughtJob(Collection<PlayerGameInfo> playerGameInfos) {
+        if (playerGameInfos.size() > playerJobs.size()) {
             throw new InvalidParameterException("too many players");
         }
     }
 
-    private void setPlayerJob(Collection<Player> players, PlayerRandomHelper[] playerRandomHelpers) {
-        Iterator<Player> iterator = players.iterator();
+    private void setPlayerJob(Collection<PlayerGameInfo> playerGameInfos, PlayerRandomHelper[] playerRandomHelpers) {
+        Iterator<PlayerGameInfo> iterator = playerGameInfos.iterator();
         int i = 0;
         while (iterator.hasNext()) {
             iterator.next().changePlayerJob(playerRandomHelpers[i].getPlayerJob());
@@ -42,8 +42,8 @@ public class CustomJobAllocator implements JobAllocator {
         }
     }
 
-    private PlayerRandomHelper[] buildJobArray(Collection<Player> players) {
-        PlayerRandomHelper[] playerRandomHelpers = new PlayerRandomHelper[players.size()];
+    private PlayerRandomHelper[] buildJobArray(Collection<PlayerGameInfo> playerGameInfos) {
+        PlayerRandomHelper[] playerRandomHelpers = new PlayerRandomHelper[playerGameInfos.size()];
         for (int i = 0; i < playerRandomHelpers.length; i++) {
             playerRandomHelpers[i] = new PlayerRandomHelper(this.playerJobs.get(i), this.random.nextInt());
         }
