@@ -1,6 +1,5 @@
 package game.jobAllocator;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Before;
 import org.junit.Test;
 import player.Player;
@@ -12,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -53,7 +53,7 @@ public class CustomJobAllocatorTest {
 
         int count = 0;
         for (Player now : players) {
-            if (now.getPlayerJob().equals(PlayerJob.WEREWOLF)) {
+            if (now.isJob(PlayerJob.WEREWOLF)) {
                 count++;
             }
         }
@@ -74,7 +74,7 @@ public class CustomJobAllocatorTest {
         });
         customJobAllocator.allocate(players);
 
-        assertEquals(PlayerJob.PROPHET, players.get(0).getPlayerJob());
+        assertTrue(players.get(0).isJob(PlayerJob.PROPHET));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class CustomJobAllocatorTest {
         });
         customJobAllocator.allocate(players);
 
-        assertEquals(PlayerJob.HUNTER, players.get(0).getPlayerJob());
+        assertTrue(players.get(0).isJob(PlayerJob.HUNTER));
     }
 
     @Test (expected = InvalidParameterException.class)

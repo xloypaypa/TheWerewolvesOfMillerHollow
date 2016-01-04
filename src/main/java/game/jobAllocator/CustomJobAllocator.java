@@ -37,7 +37,7 @@ public class CustomJobAllocator implements JobAllocator {
         Iterator<Player> iterator = players.iterator();
         int i = 0;
         while (iterator.hasNext()) {
-            iterator.next().setPlayerJob(playerRandomHelpers[i].getPlayerJob());
+            iterator.next().changePlayerJob(playerRandomHelpers[i].getPlayerJob());
             i++;
         }
     }
