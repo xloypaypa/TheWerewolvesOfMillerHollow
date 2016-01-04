@@ -1,15 +1,14 @@
 package player.player;
 
-import game.ActionAble;
 import net.sf.json.JSONObject;
 import player.playerInfo.PlayerGameInfo;
 
 /**
  * Created by xlo on 2016/1/4.
- * it's the little girl
+ * it's the villager
  */
-public class LittleGirl extends Player {
-    public LittleGirl(PlayerGameInfo playerGameInfo) {
+public class Prophet extends Player {
+    public Prophet(PlayerGameInfo playerGameInfo) {
         super(playerGameInfo);
     }
 

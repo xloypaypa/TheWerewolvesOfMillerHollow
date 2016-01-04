@@ -1,6 +1,5 @@
 package player.player;
 
-import game.ActionAble;
 import net.sf.json.JSONObject;
 import player.playerInfo.PlayerGameInfo;
 
@@ -8,8 +7,8 @@ import player.playerInfo.PlayerGameInfo;
  * Created by xlo on 2016/1/4.
  * it's the villager
  */
-public class WereWolf extends Player {
-    public WereWolf(PlayerGameInfo playerGameInfo) {
+public class Villager extends Player {
+    public Villager(PlayerGameInfo playerGameInfo) {
         super(playerGameInfo);
     }
 

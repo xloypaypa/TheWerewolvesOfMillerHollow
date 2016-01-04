@@ -5,10 +5,10 @@ import player.playerInfo.PlayerGameInfo;
 
 /**
  * Created by xlo on 2016/1/4.
- * it's the cupid
+ * it's the villager
  */
-public class Cupid extends Player {
-    public Cupid(PlayerGameInfo playerGameInfo) {
+public class Hunter extends Player {
+    public Hunter(PlayerGameInfo playerGameInfo) {
         super(playerGameInfo);
     }
 
@@ -22,7 +22,7 @@ public class Cupid extends Player {
 
     @Override
     public void whenGameStart(CallBack callBack) {
-        callBack.action();
+
     }
 
     @Override

@@ -1,15 +1,14 @@
 package player.player;
 
-import game.ActionAble;
 import net.sf.json.JSONObject;
 import player.playerInfo.PlayerGameInfo;
 
 /**
  * Created by xlo on 2016/1/4.
- * it's the villager
+ * it's the robber
  */
-public class Hunter extends Player {
-    public Hunter(PlayerGameInfo playerGameInfo) {
+public class Robber extends Player {
+    public Robber(PlayerGameInfo playerGameInfo) {
         super(playerGameInfo);
     }
 

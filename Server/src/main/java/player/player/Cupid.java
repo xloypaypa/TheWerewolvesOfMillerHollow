@@ -1,15 +1,14 @@
 package player.player;
 
-import game.ActionAble;
 import net.sf.json.JSONObject;
 import player.playerInfo.PlayerGameInfo;
 
 /**
  * Created by xlo on 2016/1/4.
- * it's the villager
+ * it's the cupid
  */
-public class Villager extends Player {
-    public Villager(PlayerGameInfo playerGameInfo) {
+public class Cupid extends Player {
+    public Cupid(PlayerGameInfo playerGameInfo) {
         super(playerGameInfo);
     }
 
@@ -23,7 +22,7 @@ public class Villager extends Player {
 
     @Override
     public void whenGameStart(CallBack callBack) {
-
+        this.getPlayerGameInfo().send("cupid", "{}".getBytes());
     }
 
     @Override
