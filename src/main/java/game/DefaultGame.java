@@ -1,7 +1,7 @@
 package game;
 
 import game.jobAllocator.JobAllocator;
-import player.Player;
+import player.player.Player;
 import player.playerInfo.PlayerGameInfo;
 import player.playerInfo.PlayerJob;
 
@@ -43,8 +43,13 @@ public class DefaultGame extends Game {
     public void beforeGameStart(CallBack callBack) {
         this.jobAllocator.allocate(playerGameInfo);
         this.players.addAll(this.playerGameInfo.stream().map(PlayerGameInfo::getPlayer).collect(Collectors.toList()));
-        this.players.forEach(now -> now.call(GameState.BEFORE_GAME_START));
-        call(GameState.WHEN_GAME_START);
+        this.players.forEach(Player::clearAction);
+        this.players.forEach(now -> now.call(GameState.BEFORE_GAME_START, () -> {
+            now.action();
+            if (isAllAction(this.players)) {
+                call(GameState.WHEN_GAME_START);
+            }
+        }));
     }
 
     @Override

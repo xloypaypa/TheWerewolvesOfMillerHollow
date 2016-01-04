@@ -6,11 +6,11 @@ package message;
  */
 public interface MessageAble {
 
-    void send(byte[] message);
+    void send(String event, byte[] message);
 
     void get(Action action);
 
     interface Action {
-        void action(byte[] message);
+        void action(String event, byte[] message);
     }
 }

@@ -1,7 +1,7 @@
 package player.playerInfo;
 
 import message.MessageAble;
-import player.Player;
+import player.player.Player;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +23,7 @@ public class PlayerGameInfo implements MessageAble {
     public void changePlayerJob(PlayerJob playerJob) {
         this.playerJob = new HashSet<>();
         addPlayerJob(playerJob);
+        this.player = playerJob.toPlayer(this);
     }
 
     public void addPlayerJob(PlayerJob playerJob) {
@@ -46,8 +47,8 @@ public class PlayerGameInfo implements MessageAble {
     }
 
     @Override
-    public void send(byte[] message) {
-
+    public void send(String event, byte[] message) {
+        System.out.println("send " + event + " " + new String(message));
     }
 
     @Override

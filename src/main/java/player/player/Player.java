@@ -1,6 +1,7 @@
-package player;
+package player.player;
 
 import game.ActionAble;
+import player.KillAble;
 import player.playerInfo.PlayerGameInfo;
 
 /**
